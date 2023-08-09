@@ -1,0 +1,70 @@
+document.getElementById("share-link-btn").addEventListener("click", () => {
+    document.getElementById("notification").classList.remove("notification-hide");
+    document.getElementById("notification").classList.add("notification-show");
+    setTimeout(() => {
+        document.getElementById("notification").classList.add("notification-hide");
+        document.getElementById("notification").classList.remove("notification-show");
+    }, 2000)
+});
+$(document).on("contextmenu", function(e) {
+    e.preventDefault();
+});
+top.radioChannels = < % -JSON.stringify(radio) % > ;
+top.videos = < % -JSON.stringify(walkVideos) % > ;
+const socket = io();
+socket.on('userCount', (count) => {
+    $('#userCount').text(count);
+});
+$('.menu-icon').click(function() {
+    $('.sidebar').toggleClass('open');
+});
+$(document).click(function(event) {
+    if (!$(event.target).closest('.sidebar').length && event.target.tagName != "I") {
+        $('.sidebar').removeClass('open');
+    }
+});
+$(document).on('click', '#btn-weather', function() {
+    var attr = $(this).attr("data-weather-term");
+    var result_div = $('#video-list li');
+    $(".btn-filter").removeClass("buttons-filter-active");
+    $(this).addClass("buttons-filter-active");
+    result_div.each(function() {
+        $(this).hide();
+        if (attr == "weather-normal-morning") {
+            $("." + attr).show();
+        } else if (attr == "weather-rain-night") {
+            $("." + attr).show();
+        } else if (attr == "weather-cloud-morning") {
+            $("." + attr).show();
+        } else if (attr == "weather-cloud-night") {
+            $("." + attr).show();
+        } else if (attr == "weather-snow-morning") {
+            $("." + attr).show();
+        } else if (attr == "weather-normal-night") {
+            $("." + attr).show();
+        } else if (attr == "weather-snow-night") {
+            $("." + attr).show();
+        } else if (attr == "weather-rain-morning") {
+            $("." + attr).show();
+        } else if (attr == "weather-all") {
+            $(this).show();
+        }
+    });
+});
+$('#search-bar').keyup(function(event) {
+    var searchTerm = $('#search-bar').val().toLowerCase();
+    var videoItems = $('#video-list li');
+    videoItems.each(function() {
+        var videoText = $(this).text().toLowerCase();
+        if (videoText.indexOf(searchTerm) !== -1) {
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+    });
+});
+$('.radio_container').hide();
+setTimeout(function() {
+    $('.radio_container').show();
+}, 3000);
+top.app_url = "<%= app_url %>"

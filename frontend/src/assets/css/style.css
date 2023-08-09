@@ -1,0 +1,417 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Roboto&display=swap');
+
+html, body, #app {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  #player-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999;
+  }
+  
+  #search-container {
+    padding-bottom: 8px;
+  }
+  
+  #ytplayer {
+    height: 100% !important;
+    width: 100% !important;
+    pointer-events: none !important;
+    z-index: -1 !important;
+  }
+  
+  .btn-crn {
+    position: absolute;
+    top: 66px;
+    right: 16px;
+    z-index: 9999;
+    display: inline-block;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    height: 32px;
+    padding: 0px 10px;
+    border-radius: 50px;
+    background-color: #2222220d;
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  
+  .btn-crn:hover {
+    color: #222;
+    background-color: white;
+  }
+                
+  
+  
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -258px;
+    width: 302px;
+    height: 100%;
+    color: white;
+    transition: all 0.3s ease-in-out;
+    z-index: 99999; 
+  }
+  
+  .sidebar.open {
+    left: 0;
+    overflow-y: overlay;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .menu-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .drive-icon a {
+    position: absolute;
+    top: 10px;
+    left: 109px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .walk-icon a {
+    position: absolute;
+    top: 10px;
+    left: 115px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 50px 0 0 0;
+  }
+  
+  li {
+    padding: 10px;
+    padding-right: 43px;
+  }
+  
+  .hr-result hr {
+    border: 1px groove white;
+    width: 238px;
+    margin: auto;
+    position: absolute;
+    right: 51px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: white;
+    font-size: 13px;
+    margin-left: 10px;
+  }
+  
+  #ytplayer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: none; 
+    z-index: 999; 
+  }
+  
+  body.sidebar-open #ytplayer-overlay {
+    display: block;
+  }
+  
+  #spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 99999;
+  }
+  
+  .spinner-circle {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid #fff;
+    border-top-color: red;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -20px; /* half the height of the circle */
+    margin-left: -20px; /* half the width of the circle */
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  div #result-uv {
+    border-radius: 10px;
+  }
+
+  div #result-uv:hover {
+    transform: scale(1.05);
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    background: #e1e4e8;
+    color: black;
+  }
+  
+  #search-bar {
+    
+    padding: 5px 3px;
+    font-size: 11px;
+    line-height: 22px;
+    width: 257px;
+    color: #24292e;
+    vertical-align: middle;
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    outline: none;
+    box-shadow: rgba(225, 228, 232, 0.2) 0px 1px 0px 0px inset;
+  
+  }
+  
+  #search-bar:focus{
+    border-color: white;
+    outline: none;
+    box-shadow: rgba(222, 220, 220, 0.3) 0px 0px 0px 3px;
+  }
+  
+  .search-search-bar {
+    padding: 7px;
+    padding-left: 74px;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: black;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 6px;
+  }
+  
+  .live-users {
+    position: absolute;
+    top: 9px;
+    right: 50%;
+    z-index: 9999;
+    display: inline-block;
+    outline: 0;
+    border: none;
+    height: 32px;
+    padding: 0px 10px;
+    border-radius: 50px;
+    color: white;
+    font-weight: 500;
+    font-size: 15px;
+  }
+  
+  .buttons-filter {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    padding: 5px 16px;
+    font-size: 23px;
+    width: 58px;
+    font-weight: 500;
+    line-height: 20px;
+    vertical-align: middle;
+    border: 1px solid;
+    border-radius: 6px;
+    color: #24292e;
+    background-color: #fafbfc;
+    border-color: #1b1f2326;
+    box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px 0px inset;
+    transition: 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    transition-property: color, background-color, border-color;
+  }
+  
+  .buttons-filter:hover {
+    transition-duration: 0.1s;
+  }
+  
+  .buttons-filter-active {
+    background-color: #222;
+    color: white;
+  }
+  
+  .material-icons {
+    font-size: 28px;
+    color: #24292e;
+  }
+  
+  .radio_container {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-left: 14px;
+    margin-left: 11px;
+    padding-bottom: 3px;
+    padding-right: 14px;
+    position: relative;
+    margin-bottom: 13px;
+    max-width: 500px;
+    border-radius: 5px;
+    background: #fafbfc;
+    border-color: #1b1f2326;
+    box-shadow: rgb(27 31 35 / 4%) 0px 1px 0px 0px, rgb(255 255 255 / 25%) 0px 1px 0px 0px inset;
+    transition: 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    transition-property: color, background-color, border-color;
+  }
+  
+  .radio_text_container {
+    display: inline-block;
+    margin-left: 11px;
+    padding-bottom: 5px;
+    padding-right: 91px;
+    position: relative;
+    margin-bottom: 13px;
+    border-radius: 5px;
+    background: #fafbfc;
+    border-color: #1b1f2326;
+    color: black;
+    box-shadow: rgb(27 31 35 / 4%) 0px 1px 0px 0px, rgb(255 255 255 / 25%) 0px 1px 0px 0px inset;
+    transition: 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    transition-property: color, background-color, border-color;
+    max-width:210px;
+    padding-left:64px;
+    text-align:center;
+  }
+  
+  .radio_text_container div {
+    padding-left: 23px;
+  }
+  
+  .radio_container i {
+    font-size: 20px !important;
+  }
+  
+  .radio_container, .radio_container * { box-sizing: border-box; }
+  
+  .play_radio_container {
+    padding: 0;
+    margin: 0;
+    background: 0;
+    border: 0;
+    cursor: pointer;
+  }
+  
+  .radio_container input[type="range"] {
+    appearance: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    width: 122px;
+    padding-right: 13px;
+    margin: 0;
+    background: 0;
+  }
+  .radio_container input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+  }
+  
+  .radio_container input[type=range]::-webkit-slider-runnable-track {
+    background: #24292e;
+    border-radius: 5px;
+  }
+  
+  .radio_container input[type=range]::-webkit-slider-thumb {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    border: 0;
+    background: #fff;
+  }
+  
+  .voice_radio_container {
+    margin: 0 10px 2px 8px;
+    cursor: pointer;
+  }
+  
+  .volume_radio_container {
+    color: white;
+    background-color: black;
+  }
+  
+  .notification {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    display: none;
+    justify-content: center;
+    height: 36px;
+    align-items: center;
+    width: 74px;
+    gap: 1rem;
+  }
+  
+  .notification-show {
+    animation: in 400ms ease-in-out forwards;
+    display: flex;
+  }
+  
+  .notification-hide {
+    animation: out 400ms ease-in-out forwards;
+    display: flex;
+  }
+  @keyframes in {
+    0% {
+        opacity: 0;
+        top: 1rem;
+   }
+    5% {
+        opacity: 0;
+   }
+    100% {
+        opacity: 1;
+        top: 2rem;
+   }
+  }
+  
+  @keyframes out {
+    0% {
+        opacity: 1;
+        top: -1rem;
+   }
+    5% {
+        opacity: 0;
+   }
+    100% {
+        opacity: 0;
+        top: -1rem;
+   }
+  }
+  
